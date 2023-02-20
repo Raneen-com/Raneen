@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="sms" translate="label" sortOrder="9999999">
+            <label>sms</label>
+        </tab>
+        <section id="smstriggers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="13" translate="label">
+            <label>SMS Triggers</label>
+            <tab>sms</tab>
+            <resource>Raneen_SmsIntegration::config</resource>
+            <group id="newcustomer" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="14"
+                   translate="label">
+                <label>New Customer Welcome</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="15" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="17" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName} for customer first name, {CustomerMiddleName} for customer
+                        middle name
+                        {CustomerLastName} for customer last name, {CustomerEmail} for customer email
+                    </comment>
+                </field>
+            </group>
+            <group id="neworder" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="19" translate="label">
+                <label>New Order</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="22" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}
+                    </comment>
+                </field>
+            </group>
+            <group id="newshipment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="24"
+                   translate="label">
+                <label>New Shipment</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="25" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="27" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}, {Carrier}, {TrackingNumber}
+                    </comment>
+                </field>
+            </group>
+            <group id="orderhold" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="29" translate="label">
+                <label>Order Hold</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="32" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}
+                    </comment>
+                </field>
+            </group>
+            <group id="orderunhold" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="34"
+                   translate="label">
+                <label>Order Unhold</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="35" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="37" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}
+                    </comment>
+                </field>
+            </group>
+            <group id="ordercancel" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="39"
+                   translate="label">
+                <label>Order Cancel</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="42" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}
+                    </comment>
+                </field>
+            </group>
+            <group id="refundorder" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="44"
+                   translate="label">
+                <label>Refund Order</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="45" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="47" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}
+                    </comment>
+                </field>
+            </group>
+            <group id="orderpaid" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="49" translate="label">
+                <label>Order Paid</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="52" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+
+
