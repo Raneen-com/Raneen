@@ -4,6 +4,12 @@
         <observer name="place_order_after" instance="Raneen\SmsIntegration\Observer\AfterOrderSave" />
     </event>
     <event name="sales_order_shipment_save_after">
-        <observer name="order_shipment_sve_after" instance="Raneen\SmsIntegration\Observer\OrderShipmentSaveAfter"/>
+        <observer name="order_shipment_sve_after" instance="Raneen\SmsIntegration\Observer\AfterOrderShipmentSave"/>
+    </event>
+    <event name="order_cancel_after">
+        <observer name="order_cancel_after" instance="Raneen\SmsIntegration\Observer\AfterOrderCancel"/>
+    </event>
+    <event name="sales_order_creditmemo_refund">
+        <observer name="sales_order_creditmemo_refund" instance="Raneen\SmsIntegration\Observer\AfterOrderCreditmemoSave"/>
     </event>
 </config>
