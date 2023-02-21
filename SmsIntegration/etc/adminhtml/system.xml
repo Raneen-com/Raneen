@@ -4,7 +4,7 @@
         <tab id="sms" translate="label" sortOrder="9999999">
             <label>sms</label>
         </tab>
-        <section id="smstriggers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="13" translate="label">
+        <section id="sms_triggers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="13" translate="label">
             <label>SMS Triggers</label>
             <tab>sms</tab>
             <resource>Raneen_SmsIntegration::config</resource>
