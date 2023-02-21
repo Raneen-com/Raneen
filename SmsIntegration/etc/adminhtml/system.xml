@@ -37,8 +37,7 @@
                 <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="32" translate="label"
                        type="textarea">
                     <label>SMS Text</label>
-                    <comment>You can use: {CustomerFirstName},
-                        {CustomerLastName},{CustomerTelephone},{OrderNumber},
+                    <comment>You can use: {OrderNumber},
                         {OrderItemsCount},{OrderItemsName},{OrderShippingAddress}
                     </comment>
                 </field>
@@ -93,10 +92,7 @@
                 <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="27" translate="label"
                        type="textarea">
                     <label>SMS Text</label>
-                    <comment>You can use: {CustomerFirstName},
-                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
-                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
-                        {OrderTime}, {OrderStatus}, {Carrier}, {TrackingNumber}
+                    <comment>You can use: {Carrier}, {TrackingNumber}
                     </comment>
                 </field>
             </group>
@@ -112,10 +108,7 @@
                 <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="27" translate="label"
                        type="textarea">
                     <label>SMS Text</label>
-                    <comment>You can use: {CustomerFirstName},
-                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
-                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
-                        {OrderTime}, {OrderStatus}, {Carrier}, {TrackingNumber}
+                    <comment>You can use: {Carrier}, {TrackingNumber}
                     </comment>
                 </field>
             </group>

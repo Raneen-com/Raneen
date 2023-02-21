@@ -7,7 +7,7 @@ use Psr\Log\LoggerInterface;
 use Raneen\SmsIntegration\Helper\SendMessages;
 use Raneen\SmsIntegration\Helper\Sms;
 
-class AfterOrderSave implements ObserverInterface
+class AfterOrderShipmentSave implements ObserverInterface
 {
     protected $logger;
     protected $smsHelper;
@@ -25,35 +25,37 @@ class AfterOrderSave implements ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $order = $observer->getEvent()->getOrder();
+        $shipment = $observer->getEvent()->getShipment();
+        $order = $shipment->getOrder();
+
         $flag = false;
         $message = '';
         $trigger = '';
-        $data = null;
 
         if ($order->getBillingAddress()->getTelephone()) {
             $this->logger->critical('Order Status ' . $order->getState());
             $this->logger->critical('telephone ' . $order->getBillingAddress()->getTelephone());
 
-            if ($order->getStatus() == "complete" && $this->smsTriggerHelper->getCompleteOrderSmsEnabled()) {
-                $trigger = "Order Completed";
-                $message = $this->smsTriggerHelper->getCompleteOrderSmsText();
-                $data = $this->smsTriggerHelper->getOrderData($order);
+            if ($shipment->getShipmentStatus() == 3 && $this->smsTriggerHelper->getCanceledShipmentSmsEnabled()) {
+                $trigger = "Shipment Canceled";
+                $message = $this->smsTriggerHelper->getCanceledShipmentSmsText();
                 $flag = true;
             }
 
-            if ($order->getStatus() == "confirmed" && $this->smsTriggerHelper->getConfirmedOrderSmsEnabled()) {
-                $trigger = "Confirmed Order";
-                $message = $this->smsTriggerHelper->getConfirmedOrderSmsText();
-                $data = $this->smsTriggerHelper->getConfirmedOrderData($order);
+            if ($shipment->getShipmentStatus() == 4 && $this->smsTriggerHelper->getShippedShipmentSmsEnabled()) {
+                $trigger = "Shipment Shipped";
+                $message = $this->smsTriggerHelper->getShippedShipmentSmsText();
                 $flag = true;
             }
 
             if ($flag) {
-                $data['CustomerTelephone'] = $order->getBillingAddress()->getTelephone();
+                $data = $this->smsTriggerHelper->getShipmentData($order, $shipment);
                 $message = $this->smsTriggerHelper->messageProcessor($message, $data);
                 $this->smsHelper->singleSmsCURL($message, $order->getBillingAddress()->getTelephone(), $trigger);
             }
+
         }
+
+
     }
 }

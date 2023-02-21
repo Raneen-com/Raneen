@@ -1,13 +1,21 @@
 <?php
+/**
+ * SMSGlobal SMS Integration with Magento developed by SMSGlobal Team (Allam Praveen)
+ * Copyright (C) 2018  SMSGlobal
+ *
+ * This file included in Smsglobal/Sms is licensed under OSL 3.0
+ *
+ * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * Please see LICENSE.txt for the full text of the OSL 3.0 license
+ */
 
 namespace Raneen\SmsIntegration\Observer;
 
-use Magento\Framework\Event\ObserverInterface;
 use Psr\Log\LoggerInterface;
 use Raneen\SmsIntegration\Helper\SendMessages;
 use Raneen\SmsIntegration\Helper\Sms;
 
-class AfterOrderSave implements ObserverInterface
+class AfterOrderCreditmemoSave implements \Magento\Framework\Event\ObserverInterface
 {
     protected $logger;
     protected $smsHelper;
@@ -23,37 +31,30 @@ class AfterOrderSave implements ObserverInterface
         $this->smsTriggerHelper = $smsTriggerHelper;
     }
 
+    /**
+     * Execute observer
+     *
+     * @param \Magento\Framework\Event\Observer $observer
+     * @return void
+     */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $order = $observer->getEvent()->getOrder();
-        $flag = false;
-        $message = '';
-        $trigger = '';
-        $data = null;
+        $creditmemo = $observer->getEvent()->getCreditmemo();
+        $order = $creditmemo->getOrder();
 
         if ($order->getBillingAddress()->getTelephone()) {
             $this->logger->critical('Order Status ' . $order->getState());
             $this->logger->critical('telephone ' . $order->getBillingAddress()->getTelephone());
 
-            if ($order->getStatus() == "complete" && $this->smsTriggerHelper->getCompleteOrderSmsEnabled()) {
-                $trigger = "Order Completed";
-                $message = $this->smsTriggerHelper->getCompleteOrderSmsText();
+            if ($order->getStatus() == "closed" && $this->smsTriggerHelper->getRefundOrderSmsEnabled()) {
+                $trigger = "Order Closed";
+                $message = $this->smsTriggerHelper->getRefundOrderSmsText();
                 $data = $this->smsTriggerHelper->getOrderData($order);
-                $flag = true;
-            }
-
-            if ($order->getStatus() == "confirmed" && $this->smsTriggerHelper->getConfirmedOrderSmsEnabled()) {
-                $trigger = "Confirmed Order";
-                $message = $this->smsTriggerHelper->getConfirmedOrderSmsText();
-                $data = $this->smsTriggerHelper->getConfirmedOrderData($order);
-                $flag = true;
-            }
-
-            if ($flag) {
                 $data['CustomerTelephone'] = $order->getBillingAddress()->getTelephone();
                 $message = $this->smsTriggerHelper->messageProcessor($message, $data);
                 $this->smsHelper->singleSmsCURL($message, $order->getBillingAddress()->getTelephone(), $trigger);
             }
+
         }
     }
 }
