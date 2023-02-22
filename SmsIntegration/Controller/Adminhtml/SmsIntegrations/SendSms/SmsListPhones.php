@@ -1,6 +1,6 @@
 <?php
 namespace Raneen\SmsIntegration\Controller\Adminhtml\SmsIntegrations\SendSms;
-class smsListCustomers extends \Magento\Backend\App\Action
+class SmsListPhones extends \Magento\Backend\App\Action
 {
     protected $resultPageFactory = false;
     public function __construct(\Magento\Backend\App\Action\Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory)
@@ -11,7 +11,7 @@ class smsListCustomers extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend((__('Send SMS To Customers')));
+        $resultPage->getConfig()->getTitle()->prepend((__('Send SMS To Lists of Phones')));
         return $resultPage;
     }
 }

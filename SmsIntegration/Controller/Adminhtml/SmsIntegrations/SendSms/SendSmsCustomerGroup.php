@@ -5,7 +5,7 @@ namespace Raneen\SmsIntegration\Controller\Adminhtml\SmsIntegrations\SendSms;
 use Magento\Customer\Model\CustomerFactory;
 use Raneen\SmsIntegration\Helper\SendMessages;
 
-class sendSmsCustomerGroup extends \Magento\Backend\App\Action
+class SendSmsCustomerGroup extends \Magento\Backend\App\Action
 {
     protected $smsHelper;
 
@@ -61,6 +61,6 @@ class sendSmsCustomerGroup extends \Magento\Backend\App\Action
             $this->messageManager->addError(__("There are no customers in selected groups"));
         }
 
-        return $this->_redirect('*/*/form');
+        return $this->_redirect('*/*/index');
     }
 }
