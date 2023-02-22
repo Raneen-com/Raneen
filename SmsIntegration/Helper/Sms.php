@@ -13,17 +13,10 @@ namespace Raneen\SmsIntegration\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
-use Smsglobal\Sms\Logger\Logger as Logger;
-
 class Sms extends AbstractHelper
 {
     protected $objectInterface;
     protected $objectManager;
-    /**
-     * @var Logger
-     */
-    protected $logger;
-
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
      */
@@ -31,11 +24,10 @@ class Sms extends AbstractHelper
 
     const CHAR_MAP = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTWXYZ0123456789';
 
-    public function __construct(Context $context, Logger $logger, \Magento\Framework\Stdlib\DateTime\DateTime $timezoneInterface)
+    public function __construct(Context $context, \Magento\Framework\Stdlib\DateTime\DateTime $timezoneInterface)
     {
         $this->objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $this->objectInterface = $this->objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface');
-        $this->logger = $logger;
         $this->_timezoneInterface = $timezoneInterface;
         parent::__construct($context);
     }
