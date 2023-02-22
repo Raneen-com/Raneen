@@ -32,7 +32,7 @@
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="*/*/sendSmsCustomerGroup"/>
+                    <item name="submit_url" xsi:type="url" path="*/*/sendsmscustomergroup"/>
                 </item>
             </argument>
         </argument>

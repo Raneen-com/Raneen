@@ -5,7 +5,7 @@ namespace Raneen\SmsIntegration\Controller\Adminhtml\SmsIntegrations\SendSms;
 use Magento\Customer\Model\CustomerFactory;
 use Raneen\SmsIntegration\Helper\SendMessages;
 
-class sendSmsListPhones extends \Magento\Backend\App\Action
+class SendSmsListPhones extends \Magento\Backend\App\Action
 {
     protected $smsHelper;
 
