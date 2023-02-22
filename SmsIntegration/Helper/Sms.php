@@ -128,6 +128,60 @@ class Sms extends AbstractHelper
     }
 
     /**
+     * Returns whether Abandoned Cart Reminder sms is enabled or not
+     * @return boolean
+     */
+    public function getAbandonedCartReminderSmsEnabled()
+    {
+        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/enabled');
+    }
+
+    /**
+     * Returns Abandoned Cart Reminder SMS Text from Store Configuration
+     * @return string
+     */
+    public function getAbandonedCartReminderSmsText()
+    {
+        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/smstext');
+    }
+
+    /**
+     * Returns Abandoned Cart Reminder Time SMS Text from Store Configuration
+     * @return string
+     */
+    public function getAbandonedCartReminderTimeSms()
+    {
+        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/abandonedcartremindertime');
+    }
+
+    /**
+     * Returns whether Payment Reminder sms is enabled or not
+     * @return boolean
+     */
+    public function getPaymentReminderSmsEnabled()
+    {
+        return $this->objectInterface->getValue('sms_triggers/paymentreminders/enabled');
+    }
+
+    /**
+     * Returns Payment Reminder SMS Text from Store Configuration
+     * @return string
+     */
+    public function getPaymentReminderSmsText()
+    {
+        return $this->objectInterface->getValue('sms_triggers/paymentreminders/smstext');
+    }
+
+    /**
+     * Returns Payment Reminder Time SMS Text from Store Configuration
+     * @return string
+     */
+    public function getPaymentReminderTimeSms()
+    {
+        return $this->objectInterface->getValue('sms_triggers/paymentreminders/paymentremindertime');
+    }
+
+    /**
      * @param $message
      * @param $data
      *
@@ -178,6 +232,13 @@ class Sms extends AbstractHelper
         $data['OrderItemsName'] = implode(",", $orderItemsName);
         $data['OrderShippingAddress'] = 'street is : ' . $orderShipment['street'] . ', City is: ' . $orderShipment['city'];
 
+        return $data;
+    }
+
+    public function getAbandonedCartData($quote)
+    {
+        $data = [];
+        $data['OrderItemsCount'] = $quote['items_count'];
         return $data;
     }
 
