@@ -120,11 +120,14 @@
                     <comment/>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="abandonedcartremindertime" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label"
+                       type="text">
+                    <label>Run Reminder Every</label>
+                </field>
                 <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="52" translate="label"
                        type="textarea">
                     <label>SMS Text</label>
-                    <comment>You can use: {CustomerFirstName},
-                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail}, {CartItems}
+                    <comment>You can use: {OrderItemsCount}
                     </comment>
                 </field>
             </group>
@@ -143,9 +146,7 @@
                 <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="52" translate="label"
                        type="textarea">
                     <label>SMS Text</label>
-                    <comment>You can use: {CustomerFirstName},
-                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail}, {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
-                        {OrderTime}, {OrderStatus}
+                    <comment>You can use: {OrderItemsCount}
                     </comment>
                 </field>
             </group>
