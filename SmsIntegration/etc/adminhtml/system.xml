@@ -120,9 +120,13 @@
                     <comment/>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="abandonedcartremindertime" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label"
-                       type="text">
-                    <label>Run Reminder Every</label>
+                <field id="cartfrequency" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Frequency</label>
+                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
+                    <backend_model>Raneen\SmsIntegration\Model\Config\Cronconfig</backend_model>
+                    </field>
+                <field id="carttime" translate="label comment" sortOrder="2" type="time" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Start Time</label>
                 </field>
                 <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="52" translate="label"
                        type="textarea">
@@ -133,23 +137,36 @@
             </group>
             <group id="paymentreminders" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="29" translate="label">
                 <label>Payment Reminders</label>
-                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label"
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label"
                        type="select">
                     <label>Enabled</label>
                     <comment/>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="paymentremindertime" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label"
-                       type="text">
-                    <label>Run Reminder Every</label>
-                </field>
-                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="52" translate="label"
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="4" translate="label"
                        type="textarea">
                     <label>SMS Text</label>
                     <comment>You can use: {OrderItemsCount}
                     </comment>
                 </field>
             </group>
+        </section>
+        <section id="cron_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="14" translate="label">
+            <label>Cron Setup</label>
+            <tab>sms</tab>
+            <resource>Raneen_SmsIntegration::config</resource>
+            <group id="cron_job_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="28" translate="label">
+                <label>Cron Job Configuration</label>
+                <field id="frequency" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Frequency</label>
+                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
+                    <backend_model>Raneen\SmsIntegration\Model\Config\Cronconfig</backend_model>
+                </field>
+                <field id="time" translate="label comment" sortOrder="2" type="time" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Start Time</label>
+                </field>
+            </group>
+
         </section>
     </system>
 </config>
