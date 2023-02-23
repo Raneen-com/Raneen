@@ -4,9 +4,11 @@ namespace Raneen\SmsIntegration\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
+use Magento\Store\Model\ScopeInterface;
+
 class Sms extends AbstractHelper
 {
-protected $objectInterface;
+    protected $objectInterface;
     protected $objectManager;
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
@@ -27,176 +29,158 @@ protected $objectInterface;
      * Returns whether new order sms is enabled or not
      * @return boolean
      */
-    public function getNewOrderSmsEnabled()
+    public function getNewOrderSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/neworder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/neworder/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns New Order SMS Text from Store Configuration
      * @return string
      */
-    public function getNewOrderSmsText()
+    public function getNewOrderSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/neworder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/neworder/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns whether new order sms is enabled or not
      * @return boolean
      */
-    public function getCompleteOrderSmsEnabled()
+    public function getCompleteOrderSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/completeorder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/completeorder/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns New Order SMS Text from Store Configuration
      * @return string
      */
-    public function getCompleteOrderSmsText()
+    public function getCompleteOrderSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/completeorder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/completeorder/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
-    public function getConfirmedOrderSmsEnabled()
+    public function getConfirmedOrderSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/confirmedorder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/confirmedorder/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns New Order SMS Text from Store Configuration
      * @return string
      */
-    public function getConfirmedOrderSmsText()
+    public function getConfirmedOrderSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/confirmedorder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/confirmedorder/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns whether order refund sms is enabled or not
      * @return boolean
      */
-    public function getRefundOrderSmsEnabled()
+    public function getRefundOrderSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/refundorder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/refundorder/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns order refund SMS Text from Store Configuration
      * @return string
      */
-    public function getRefundOrderSmsText()
+    public function getRefundOrderSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/refundorder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/refundorder/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns whether order cancel sms is enabled or not
      * @return boolean
      */
-    public function getCancelOrderSmsEnabled()
+    public function getCancelOrderSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/ordercancel/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/ordercancel/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns order cancel SMS Text from Store Configuration
      * @return string
      */
-    public function getCancelOrderSmsText()
+    public function getCancelOrderSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/ordercancel/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/ordercancel/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns whether new shipment sms is enabled or not
      * @return boolean
      */
-    public function getShippedShipmentSmsEnabled()
+    public function getShippedShipmentSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentshipped/enabled');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentshipped/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns New Shipment SMS Text from Store Configuration
      * @return string
      */
-    public function getShippedShipmentSmsText()
+    public function getShippedShipmentSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentshipped/smstext');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentshipped/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns whether new shipment sms is enabled or not
      * @return boolean
      */
-    public function getCanceledShipmentSmsEnabled()
+    public function getCanceledShipmentSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentcancelled/enabled');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentcancelled/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns New Shipment SMS Text from Store Configuration
      * @return string
      */
-    public function getCanceledShipmentSmsText()
+    public function getCanceledShipmentSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentcancelled/smstext');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentcancelled/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns whether Abandoned Cart Reminder sms is enabled or not
      * @return boolean
      */
-    public function getAbandonedCartReminderSmsEnabled()
+    public function getAbandonedCartReminderSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns Abandoned Cart Reminder SMS Text from Store Configuration
      * @return string
      */
-    public function getAbandonedCartReminderSmsText()
+    public function getAbandonedCartReminderSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/smstext');
-    }
-
-    /**
-     * Returns Abandoned Cart Reminder Time SMS Text from Store Configuration
-     * @return string
-     */
-    public function getAbandonedCartReminderTimeSms()
-    {
-        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/abandonedcartremindertime');
+        return $this->objectInterface->getValue('sms_triggers/abandonedcartreminder/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns whether Payment Reminder sms is enabled or not
      * @return boolean
      */
-    public function getPaymentReminderSmsEnabled()
+    public function getPaymentReminderSmsEnabled($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/paymentreminders/enabled');
+        return $this->objectInterface->getValue('sms_triggers/paymentreminders/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
      * Returns Payment Reminder SMS Text from Store Configuration
      * @return string
      */
-    public function getPaymentReminderSmsText()
+    public function getPaymentReminderSmsText($storeId = null)
     {
-        return $this->objectInterface->getValue('sms_triggers/paymentreminders/smstext');
-    }
-
-    /**
-     * Returns Payment Reminder Time SMS Text from Store Configuration
-     * @return string
-     */
-    public function getPaymentReminderTimeSms()
-    {
-        return $this->objectInterface->getValue('sms_triggers/paymentreminders/paymentremindertime');
+        return $this->objectInterface->getValue('sms_triggers/paymentreminders/smstext', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**

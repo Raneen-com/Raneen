@@ -36,7 +36,6 @@ class AbandonedCartAndPaymentCron
 
     public function execute()
     {
-        //dd("DSAdsadsa");
         $this->logger->info('SMS Send Reminder Cron Initiated', []);
         $quoteObject = $this->quotesFactory->create();
         $quotesCollection = $quoteObject->addFieldToFilter('is_active', ['eq' => 1])
@@ -62,15 +61,15 @@ class AbandonedCartAndPaymentCron
             preg_match_all('/01\d{9}/', $telephone, $phoneNumber);
 
             if ($phoneNumber[0]) {
-                if ($quotePaymentObjectCollection->getData() == null && $this->smsTriggerHelper->getAbandonedCartReminderSmsEnabled()) {
+                if ($quotePaymentObjectCollection->getData() == null && $this->smsTriggerHelper->getAbandonedCartReminderSmsEnabled($quote['store_id'])) {
                     $trigger = "Abandoned Cart Reminder";
-                    $message = $this->smsTriggerHelper->getAbandonedCartReminderSmsText();
+                    $message = $this->smsTriggerHelper->getAbandonedCartReminderSmsText($quote['store_id']);
                     $data = $this->smsTriggerHelper->getAbandonedCartData($quote);
                     $message = $this->smsTriggerHelper->messageProcessor($message, $data);
                     $this->smsHelper->singleSmsCURL($message, '2' . $phoneNumber[0][0], $trigger);
-                } elseif ($quotePaymentObjectCollection->getData() && $this->smsTriggerHelper->getPaymentReminderSmsEnabled()) {
+                } elseif ($quotePaymentObjectCollection->getData() && $this->smsTriggerHelper->getPaymentReminderSmsEnabled($quote['store_id'])) {
                     $trigger = "Payment Reminder";
-                    $message = $this->smsTriggerHelper->getPaymentReminderSmsText();
+                    $message = $this->smsTriggerHelper->getPaymentReminderSmsText($quote['store_id']);
                     $data = $this->smsTriggerHelper->getAbandonedCartData($quote);
                     $message = $this->smsTriggerHelper->messageProcessor($message, $data);
                     $this->smsHelper->singleSmsCURL($message, '2' . $phoneNumber[0][0], $trigger);

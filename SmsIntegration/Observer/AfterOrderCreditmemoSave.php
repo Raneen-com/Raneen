@@ -46,9 +46,9 @@ class AfterOrderCreditmemoSave implements \Magento\Framework\Event\ObserverInter
             $this->logger->critical('Order Status ' . $order->getState());
             $this->logger->critical('telephone ' . $order->getBillingAddress()->getTelephone());
 
-            if ($order->getStatus() == "closed" && $this->smsTriggerHelper->getRefundOrderSmsEnabled()) {
+            if ($order->getStatus() == "closed" && $this->smsTriggerHelper->getRefundOrderSmsEnabled($order->getStoreId())) {
                 $trigger = "Order Closed";
-                $message = $this->smsTriggerHelper->getRefundOrderSmsText();
+                $message = $this->smsTriggerHelper->getRefundOrderSmsText($order->getStoreId());
                 $data = $this->smsTriggerHelper->getOrderData($order);
                 $data['CustomerTelephone'] = $order->getBillingAddress()->getTelephone();
                 $message = $this->smsTriggerHelper->messageProcessor($message, $data);

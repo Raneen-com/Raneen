@@ -36,15 +36,15 @@ class AfterOrderShipmentSave implements ObserverInterface
             $this->logger->critical('Order Status ' . $order->getState());
             $this->logger->critical('telephone ' . $order->getBillingAddress()->getTelephone());
 
-            if ($shipment->getShipmentStatus() == 3 && $this->smsTriggerHelper->getCanceledShipmentSmsEnabled()) {
+            if ($shipment->getShipmentStatus() == 3 && $this->smsTriggerHelper->getCanceledShipmentSmsEnabled($order->getStoreId())) {
                 $trigger = "Shipment Canceled";
-                $message = $this->smsTriggerHelper->getCanceledShipmentSmsText();
+                $message = $this->smsTriggerHelper->getCanceledShipmentSmsText($order->getStoreId());
                 $flag = true;
             }
 
-            if ($shipment->getShipmentStatus() == 4 && $this->smsTriggerHelper->getShippedShipmentSmsEnabled()) {
+            if ($shipment->getShipmentStatus() == 4 && $this->smsTriggerHelper->getShippedShipmentSmsEnabled($order->getStoreId())) {
                 $trigger = "Shipment Shipped";
-                $message = $this->smsTriggerHelper->getShippedShipmentSmsText();
+                $message = $this->smsTriggerHelper->getShippedShipmentSmsText($order->getStoreId());
                 $flag = true;
             }
 
