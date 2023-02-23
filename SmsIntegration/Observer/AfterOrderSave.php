@@ -35,6 +35,13 @@ class AfterOrderSave implements ObserverInterface
             $this->logger->critical('Order Status ' . $order->getState());
             $this->logger->critical('telephone ' . $order->getBillingAddress()->getTelephone());
 
+            if ($order->getState() == "new" && $this->smsTriggerHelper->getNewOrderSmsEnabled()) {
+                $trigger = "New Order";
+                $message = $this->smsTriggerHelper->getNewOrderSmsText();
+                $data = $this->smsTriggerHelper->getOrderData($order);
+                $flag = true;
+            }
+
             if ($order->getStatus() == "complete" && $this->smsTriggerHelper->getCompleteOrderSmsEnabled()) {
                 $trigger = "Order Completed";
                 $message = $this->smsTriggerHelper->getCompleteOrderSmsText();

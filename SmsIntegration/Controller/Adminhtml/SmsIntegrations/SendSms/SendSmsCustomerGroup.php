@@ -23,7 +23,11 @@ class SendSmsCustomerGroup extends \Magento\Backend\App\Action
 
     public function execute()
     {
+
         $data = $this->getRequest()->getPostValue();
+        if(time && freq){
+            // cron job
+        }
         $customers = [];
         $responseStatus = false;
 

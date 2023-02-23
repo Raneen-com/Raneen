@@ -8,6 +8,24 @@
             <label>SMS Triggers</label>
             <tab>sms</tab>
             <resource>Raneen_SmsIntegration::config</resource>
+            <group id="neworder" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="19" translate="label">
+                <label>New Order</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label"
+                       type="select">
+                    <label>Enabled</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="22" translate="label"
+                       type="textarea">
+                    <label>SMS Text</label>
+                    <comment>You can use: {CustomerFirstName},
+                        {CustomerLastName},{CustomerTelephone}, {CustomerEmail},
+                        {OrderNumber}, {OrderCurrency}, {OrderTotal}, {OrderDate}
+                        {OrderTime}, {OrderStatus}
+                    </comment>
+                </field>
+            </group>
             <group id="completeorder" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="22" translate="label">
                 <label>Order Completed</label>
                 <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label"
@@ -120,14 +138,6 @@
                     <comment/>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="cartfrequency" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Frequency</label>
-                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
-                    <backend_model>Raneen\SmsIntegration\Model\Config\Cronconfig</backend_model>
-                    </field>
-                <field id="carttime" translate="label comment" sortOrder="2" type="time" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Start Time</label>
-                </field>
                 <field id="smstext" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="52" translate="label"
                        type="textarea">
                     <label>SMS Text</label>
@@ -151,22 +161,22 @@
                 </field>
             </group>
         </section>
-        <section id="cron_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="14" translate="label">
-            <label>Cron Setup</label>
-            <tab>sms</tab>
-            <resource>Raneen_SmsIntegration::config</resource>
-            <group id="cron_job_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="28" translate="label">
-                <label>Cron Job Configuration</label>
-                <field id="frequency" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Frequency</label>
-                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
-                    <backend_model>Raneen\SmsIntegration\Model\Config\Cronconfig</backend_model>
-                </field>
-                <field id="time" translate="label comment" sortOrder="2" type="time" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Start Time</label>
-                </field>
-            </group>
+<!--        <section id="cron_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="14" translate="label">-->
+<!--            <label>Cron Setup</label>-->
+<!--            <tab>sms</tab>-->
+<!--            <resource>Raneen_SmsIntegration::config</resource>-->
+<!--            <group id="cron_job_config" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="28" translate="label">-->
+<!--                <label>Cron Job Configuration</label>-->
+<!--                <field id="frequency" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">-->
+<!--                    <label>Frequency</label>-->
+<!--                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>-->
+<!--                    <backend_model>Raneen\SmsIntegration\Model\Config\Cronconfig</backend_model>-->
+<!--                </field>-->
+<!--                <field id="time" translate="label comment" sortOrder="2" type="time" showInDefault="1" showInWebsite="1" showInStore="1">-->
+<!--                    <label>Start Time</label>-->
+<!--                </field>-->
+<!--            </group>-->
 
-        </section>
+<!--        </section>-->
     </system>
 </config>
