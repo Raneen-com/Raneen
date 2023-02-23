@@ -29,7 +29,7 @@ protected $objectInterface;
      */
     public function getNewOrderSmsEnabled()
     {
-        return $this->objectInterface->getValue('sms_triggers/neworder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/neworder/enabled');
     }
 
     /**
@@ -38,7 +38,7 @@ protected $objectInterface;
      */
     public function getNewOrderSmsText()
     {
-        return $this->objectInterface->getValue('sms_triggers/neworder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/neworder/smstext');
     }
 
     /**
@@ -47,7 +47,7 @@ protected $objectInterface;
      */
     public function getCompleteOrderSmsEnabled()
     {
-        return $this->objectInterface->getValue('sms_triggers/completeorder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/completeorder/enabled');
     }
 
     /**
@@ -56,12 +56,12 @@ protected $objectInterface;
      */
     public function getCompleteOrderSmsText()
     {
-        return $this->objectInterface->getValue('sms_triggers/completeorder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/completeorder/smstext');
     }
 
     public function getConfirmedOrderSmsEnabled()
     {
-        return $this->objectInterface->getValue('sms_triggers/confirmedorder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/confirmedorder/enabled');
     }
 
     /**
@@ -70,7 +70,7 @@ protected $objectInterface;
      */
     public function getConfirmedOrderSmsText()
     {
-        return $this->objectInterface->getValue('sms_triggers/confirmedorder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/confirmedorder/smstext');
     }
 
     /**
@@ -79,7 +79,7 @@ protected $objectInterface;
      */
     public function getRefundOrderSmsEnabled()
     {
-        return $this->objectInterface->getValue('sms_triggers/refundorder/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/refundorder/enabled');
     }
 
     /**
@@ -88,7 +88,7 @@ protected $objectInterface;
      */
     public function getRefundOrderSmsText()
     {
-        return $this->objectInterface->getValue('sms_triggers/refundorder/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/refundorder/smstext');
     }
 
     /**
@@ -97,7 +97,7 @@ protected $objectInterface;
      */
     public function getCancelOrderSmsEnabled()
     {
-        return $this->objectInterface->getValue('sms_triggers/ordercancel/enabled');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/ordercancel/enabled');
     }
 
     /**
@@ -106,7 +106,7 @@ protected $objectInterface;
      */
     public function getCancelOrderSmsText()
     {
-        return $this->objectInterface->getValue('sms_triggers/ordercancel/smstext');
+        return $this->objectInterface->getValue('sms_triggers/orderTriggerGroup/ordercancel/smstext');
     }
 
     /**
@@ -115,7 +115,7 @@ protected $objectInterface;
      */
     public function getShippedShipmentSmsEnabled()
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentshipped/enabled');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentshipped/enabled');
     }
 
     /**
@@ -124,7 +124,7 @@ protected $objectInterface;
      */
     public function getShippedShipmentSmsText()
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentshipped/smstext');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentshipped/smstext');
     }
 
     /**
@@ -133,7 +133,7 @@ protected $objectInterface;
      */
     public function getCanceledShipmentSmsEnabled()
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentcancelled/enabled');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentcancelled/enabled');
     }
 
     /**
@@ -142,7 +142,7 @@ protected $objectInterface;
      */
     public function getCanceledShipmentSmsText()
     {
-        return $this->objectInterface->getValue('sms_triggers/shipmentcancelled/smstext');
+        return $this->objectInterface->getValue('sms_triggers/shipmentTriggerGroup/shipmentcancelled/smstext');
     }
 
     /**
