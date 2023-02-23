@@ -36,6 +36,7 @@ class AbandonedCartAndPaymentCron
 
     public function execute()
     {
+        //dd("DSAdsadsa");
         $this->logger->info('SMS Send Reminder Cron Initiated', []);
         $quoteObject = $this->quotesFactory->create();
         $quotesCollection = $quoteObject->addFieldToFilter('is_active', ['eq' => 1])

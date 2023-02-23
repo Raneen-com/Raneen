@@ -27,6 +27,24 @@ protected $objectInterface;
      * Returns whether new order sms is enabled or not
      * @return boolean
      */
+    public function getNewOrderSmsEnabled()
+    {
+        return $this->objectInterface->getValue('sms_triggers/neworder/enabled');
+    }
+
+    /**
+     * Returns New Order SMS Text from Store Configuration
+     * @return string
+     */
+    public function getNewOrderSmsText()
+    {
+        return $this->objectInterface->getValue('sms_triggers/neworder/smstext');
+    }
+
+    /**
+     * Returns whether new order sms is enabled or not
+     * @return boolean
+     */
     public function getCompleteOrderSmsEnabled()
     {
         return $this->objectInterface->getValue('sms_triggers/completeorder/enabled');
