@@ -38,4 +38,4 @@ Supports Unicode SMS messages.
 
 ## License
 
-[Raneen](https://choosealicense.com/licenses/mit/)
+[Raneen](https://www.raneen.com/)
