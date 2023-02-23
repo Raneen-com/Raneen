@@ -45,15 +45,14 @@ class AfterOrderCancel implements \Magento\Framework\Event\ObserverInterface
             $this->logger->critical('Order Status ' . $order->getState());
             $this->logger->critical('telephone ' . $order->getBillingAddress()->getTelephone());
 
-            if ($order->getStatus() == "canceled" && $this->smsTriggerHelper->getCancelOrderSmsEnabled()) {
+            if ($order->getStatus() == "canceled" && $this->smsTriggerHelper->getCancelOrderSmsEnabled($order->getStoreId())) {
                 $trigger = "Order Canceled";
-                $message = $this->smsTriggerHelper->getCancelOrderSmsText();
+                $message = $this->smsTriggerHelper->getCancelOrderSmsText($order->getStoreId());
                 $data = $this->smsTriggerHelper->getOrderData($order);
                 $data['CustomerTelephone'] = $order->getBillingAddress()->getTelephone();
                 $message = $this->smsTriggerHelper->messageProcessor($message, $data);
                 $this->smsHelper->singleSmsCURL($message, $order->getBillingAddress()->getTelephone(), $trigger);
             }
-
         }
     }
 }

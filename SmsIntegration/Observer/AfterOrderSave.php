@@ -35,23 +35,23 @@ class AfterOrderSave implements ObserverInterface
             $this->logger->critical('Order Status ' . $order->getState());
             $this->logger->critical('telephone ' . $order->getBillingAddress()->getTelephone());
 
-            if ($order->getState() == "new" && $this->smsTriggerHelper->getNewOrderSmsEnabled()) {
+            if ($order->getState() == "new" && $this->smsTriggerHelper->getNewOrderSmsEnabled($order->getStoreId())) {
                 $trigger = "New Order";
-                $message = $this->smsTriggerHelper->getNewOrderSmsText();
+                $message = $this->smsTriggerHelper->getNewOrderSmsText($order->getStoreId());
                 $data = $this->smsTriggerHelper->getOrderData($order);
                 $flag = true;
             }
 
-            if ($order->getStatus() == "complete" && $this->smsTriggerHelper->getCompleteOrderSmsEnabled()) {
+            if ($order->getStatus() == "complete" && $this->smsTriggerHelper->getCompleteOrderSmsEnabled($order->getStoreId())) {
                 $trigger = "Order Completed";
-                $message = $this->smsTriggerHelper->getCompleteOrderSmsText();
+                $message = $this->smsTriggerHelper->getCompleteOrderSmsText($order->getStoreId());
                 $data = $this->smsTriggerHelper->getOrderData($order);
                 $flag = true;
             }
 
-            if ($order->getStatus() == "confirmed" && $this->smsTriggerHelper->getConfirmedOrderSmsEnabled()) {
+            if ($order->getStatus() == "confirmed" && $this->smsTriggerHelper->getConfirmedOrderSmsEnabled($order->getStoreId())) {
                 $trigger = "Confirmed Order";
-                $message = $this->smsTriggerHelper->getConfirmedOrderSmsText();
+                $message = $this->smsTriggerHelper->getConfirmedOrderSmsText($order->getStoreId());
                 $data = $this->smsTriggerHelper->getConfirmedOrderData($order);
                 $flag = true;
             }
