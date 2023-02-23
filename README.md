@@ -1,6 +1,6 @@
 # Magento 2 SMS-Notification Extension
 
-Magento 2 SMS-Notification is an integration with the Magento e-commerce platform. This Integration enables Magento store admins to configure automated SMS notifications to the administrator and customers for important order status updates, and also allows sending bulk SMS messages to customers, The Integration offers great flexibility, in sending individual SMS or bulk SMS messages to various groups.
+Magento 2 SMS-Notification is an integration with the Magento e-commerce platform. This Integration enables Magento admins to configure automated SMS notifications to the administrator and customers for important order status updates, and also allows sending bulk SMS messages to customers, The Integration offers great flexibility, in sending individual SMS or bulk SMS messages to various groups.
 
 ## Requirments
 
@@ -21,9 +21,9 @@ Magento Community 2.4.x
 
 - when order is refunded (Credit Memo)
 
-- when order is on hold
+- when order is completed
 
-- when order is on unhold
+- when order is confiremed
 
 - Allows you to send/schedule individual SMS messages
 
