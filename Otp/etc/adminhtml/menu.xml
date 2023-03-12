@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Raneen_Otp::otpIndex" title="OTP" module="Raneen_Otp" sortOrder="51" resource="Raneen_Otp::OtpResource"/>
+        <add id="Raneen_Otp::list" title="Otp List" module="Raneen_Otp" sortOrder="10" action="smsintegration/SmsIntegrations_Provider/index" resource="Raneen_Otp::list" parent="Raneen_Otp::otpIndex" />
+    </menu>
+</config>
